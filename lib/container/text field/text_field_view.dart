@@ -26,7 +26,9 @@ class TextFieldView extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(controller.borderRadius),
+                      borderRadius: BorderRadius.circular(
+                        controller.borderRadius,
+                      ),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black12,
@@ -44,7 +46,9 @@ class TextFieldView extends StatelessWidget {
                           color: controller.textColor,
                         ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(controller.borderRadius),
+                          borderRadius: BorderRadius.circular(
+                            controller.borderRadius,
+                          ),
                           borderSide: BorderSide(
                             color: controller.borderColor,
                             width: controller.borderWidth,
@@ -53,7 +57,10 @@ class TextFieldView extends StatelessWidget {
                         filled: controller.isFilled,
                         fillColor: controller.fillColor,
                       ),
-                      style: TextStyle(fontSize: controller.fontSize, color: controller.textColor),
+                      style: TextStyle(
+                        fontSize: controller.fontSize,
+                        color: controller.textColor,
+                      ),
                     ),
                   ),
                 ),
@@ -81,7 +88,10 @@ class TextFieldView extends StatelessWidget {
                     children: [
                       const Text(
                         "Customize TextField",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 10),
 
@@ -190,7 +200,10 @@ class TextFieldView extends StatelessWidget {
                         child: Column(
                           children: [
                             const TabBar(
-                              tabs: [Tab(text: "Custom Widget"), Tab(text: "Extension")],
+                              tabs: [
+                                Tab(text: "Custom Widget"),
+                                Tab(text: "Extension"),
+                              ],
                             ),
                             const SizedBox(height: 10),
                             SizedBox(
@@ -198,7 +211,9 @@ class TextFieldView extends StatelessWidget {
                               child: TabBarView(
                                 physics: const NeverScrollableScrollPhysics(),
                                 children: [
-                                  _buildCodeBox(controller.generateCode()), // Widget Code
+                                  _buildCodeBox(
+                                    controller.generateCode(),
+                                  ), // Widget Code
                                   _buildCodeBox(
                                     controller.generateExtensionCode(),
                                   ), // Extension Code
@@ -249,7 +264,10 @@ class TextFieldView extends StatelessWidget {
                 language: 'dart',
                 theme: monokaiSublimeTheme,
                 padding: const EdgeInsets.all(12),
-                textStyle: const TextStyle(fontSize: 14, fontFamily: 'monospace'),
+                textStyle: const TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'monospace',
+                ),
               ),
             ),
           ),

@@ -33,7 +33,10 @@ class AnimationView extends StatelessWidget {
                       height: 100,
                       color: Colors.blue,
                       child: const Center(
-                        child: Text("Live Preview", style: TextStyle(color: Colors.white)),
+                        child: Text(
+                          "Live Preview",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
@@ -49,7 +52,10 @@ class AnimationView extends StatelessWidget {
     );
   }
 
-  Widget _buildSettingsPanel(AnimationControllerX controller, BuildContext context) {
+  Widget _buildSettingsPanel(
+    AnimationControllerX controller,
+    BuildContext context,
+  ) {
     return Container(
       width: 350,
       padding: const EdgeInsets.all(16),
@@ -77,7 +83,8 @@ class AnimationView extends StatelessWidget {
 
             // Class Name Input
             _buildTextField("Class Name", controller.className, (value) {
-              controller.className = value.isNotEmpty ? value : "MyAnimatedWidget";
+              controller.className =
+                  value.isNotEmpty ? value : "MyAnimatedWidget";
               controller.update();
             }),
 
@@ -86,12 +93,9 @@ class AnimationView extends StatelessWidget {
             DropdownButton<String>(
               value: controller.selectedAnimation,
               items:
-                  [
-                    'Fade',
-                    'Scale',
-                    'Rotate',
-                    'Slide',
-                  ].map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
+                  ['Fade', 'Scale', 'Rotate', 'Slide']
+                      .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                      .toList(),
               onChanged: (value) => controller.updateAnimation(value!),
             ),
 
@@ -114,14 +118,21 @@ class AnimationView extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField(String label, String value, Function(String) onChanged) {
+  Widget _buildTextField(
+    String label,
+    String value,
+    Function(String) onChanged,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label),
         TextField(
           onChanged: onChanged,
-          decoration: const InputDecoration(border: OutlineInputBorder(), hintText: "Enter value"),
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: "Enter value",
+          ),
         ),
         const SizedBox(height: 10),
       ],
@@ -133,7 +144,9 @@ class AnimationView extends StatelessWidget {
       length: 2, // Two tabs
       child: Column(
         children: [
-          const TabBar(tabs: [Tab(text: "Main Code"), Tab(text: "Extensions Code")]),
+          const TabBar(
+            tabs: [Tab(text: "Main Code"), Tab(text: "Extensions Code")],
+          ),
           SizedBox(height: 10),
           SizedBox(
             height: 400,
@@ -163,9 +176,9 @@ class AnimationView extends StatelessWidget {
             icon: const Icon(Icons.copy, color: Colors.white),
             onPressed: () {
               Clipboard.setData(ClipboardData(text: code));
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(const SnackBar(content: Text("Copied to clipboard!")));
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Copied to clipboard!")),
+              );
             },
           ),
           Expanded(
@@ -176,7 +189,10 @@ class AnimationView extends StatelessWidget {
                 language: 'dart',
                 theme: monokaiSublimeTheme,
                 padding: const EdgeInsets.all(12),
-                textStyle: const TextStyle(fontSize: 14, fontFamily: 'monospace'),
+                textStyle: const TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'monospace',
+                ),
               ),
             ),
           ),

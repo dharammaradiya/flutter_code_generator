@@ -25,7 +25,7 @@ import 'package:get/get.dart';
 //   String generateMainCode() {
 //     return """
 // import 'package:flutter/material.dart';
-// import 'animation_extensions.dart'; 
+// import 'animation_extensions.dart';
 
 // class $className extends StatefulWidget {
 //   @override
@@ -127,10 +127,8 @@ import 'package:get/get.dart';
 // }
 
 
-
-
-
-class AnimationControllerX extends GetxController with GetSingleTickerProviderStateMixin {
+class AnimationControllerX extends GetxController
+    with GetSingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<double> animation;
 
@@ -154,20 +152,28 @@ class AnimationControllerX extends GetxController with GetSingleTickerProviderSt
   void _setAnimation() {
     switch (selectedAnimation) {
       case 'Fade':
-        animation = Tween<double>(begin: 0.2, end: 1.0)
-            .animate(CurvedAnimation(parent: animationController, curve: curve));
+        animation = Tween<double>(
+          begin: 0.2,
+          end: 1.0,
+        ).animate(CurvedAnimation(parent: animationController, curve: curve));
         break;
       case 'Scale':
-        animation = Tween<double>(begin: 0.5, end: 1.2)
-            .animate(CurvedAnimation(parent: animationController, curve: curve));
+        animation = Tween<double>(
+          begin: 0.5,
+          end: 1.2,
+        ).animate(CurvedAnimation(parent: animationController, curve: curve));
         break;
       case 'Rotate':
-        animation = Tween<double>(begin: 0, end: 2 * 3.14)
-            .animate(CurvedAnimation(parent: animationController, curve: curve));
+        animation = Tween<double>(
+          begin: 0,
+          end: 2 * 3.14,
+        ).animate(CurvedAnimation(parent: animationController, curve: curve));
         break;
       case 'Slide':
-        animation = Tween<double>(begin: -50, end: 50)
-            .animate(CurvedAnimation(parent: animationController, curve: curve));
+        animation = Tween<double>(
+          begin: -50,
+          end: 50,
+        ).animate(CurvedAnimation(parent: animationController, curve: curve));
         break;
     }
     update();
@@ -192,13 +198,16 @@ class AnimationControllerX extends GetxController with GetSingleTickerProviderSt
       case 'Scale':
         return Transform.scale(scale: animation.value, child: child);
       case 'Slide':
-        return Transform.translate(offset: Offset(0, animation.value), child: child);
+        return Transform.translate(
+          offset: Offset(0, animation.value),
+          child: child,
+        );
       default:
         return Opacity(opacity: animation.value, child: child);
     }
   }
 
- String generateMainCode() {
+  String generateMainCode() {
     return """
 import 'package:flutter/material.dart';
 import 'animation_extensions.dart'; 

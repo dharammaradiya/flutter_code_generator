@@ -17,10 +17,25 @@ class NavigationController extends GetxController {
   var selectedIndex = 0.obs;
 
   final List<GetPage> screens = [
-    GetPage(name: "/container", page: () => const ContainerView(), binding: ContainerBinding()),
-    GetPage(name: "/animation", page: () => AnimationView(), binding: AnimationBinding()),
-    GetPage(name: "/text_field", page: () => TextFieldView(),binding: TextFieldBinding()),
-    GetPage(name: "/components", page: () => const ContentArea(title: "Components Page")),
+    GetPage(
+      name: "/container",
+      page: () => const ContainerView(),
+      binding: ContainerBinding(),
+    ),
+    GetPage(
+      name: "/animation",
+      page: () => AnimationView(),
+      binding: AnimationBinding(),
+    ),
+    GetPage(
+      name: "/text_field",
+      page: () => TextFieldView(),
+      binding: TextFieldBinding(),
+    ),
+    GetPage(
+      name: "/components",
+      page: () => const ContentArea(title: "Components Page"),
+    ),
   ];
 
   void switchScreen(int newIndex) {
@@ -39,14 +54,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(debugShowCheckedModeBanner: false, home: WebStyleNavigation());
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: WebStyleNavigation(),
+    );
   }
 }
 
 class WebStyleNavigation extends StatelessWidget {
   final NavigationController controller = Get.put(NavigationController());
 
-  final List<String> menuItems = ["Container", "Animation", "Text Field", "Components"];
+  final List<String> menuItems = [
+    "Container",
+    "Animation",
+    "Text Field",
+    "Components",
+  ];
 
   WebStyleNavigation({super.key});
 
@@ -56,7 +79,11 @@ class WebStyleNavigation extends StatelessWidget {
       body: Row(
         children: [
           SidebarNavigation(menuItems: menuItems, controller: controller),
-          Expanded(child: Obx(() => controller.screens[controller.selectedIndex.value].page())),
+          Expanded(
+            child: Obx(
+              () => controller.screens[controller.selectedIndex.value].page(),
+            ),
+          ),
         ],
       ),
     );
@@ -68,7 +95,11 @@ class SidebarNavigation extends StatelessWidget {
   final List<String> menuItems;
   final NavigationController controller;
 
-  const SidebarNavigation({super.key, required this.menuItems, required this.controller});
+  const SidebarNavigation({
+    super.key,
+    required this.menuItems,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -82,11 +113,17 @@ class SidebarNavigation extends StatelessWidget {
             () => InkWell(
               onTap: () => controller.switchScreen(index),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 20,
+                ),
                 child: Text(
                   menuItems[index],
                   style: TextStyle(
-                    color: controller.selectedIndex.value == index ? Colors.blue : Colors.white,
+                    color:
+                        controller.selectedIndex.value == index
+                            ? Colors.blue
+                            : Colors.white,
                     fontSize: 16,
                     fontWeight:
                         controller.selectedIndex.value == index

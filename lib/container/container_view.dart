@@ -12,7 +12,8 @@ class ContainerView extends StatefulWidget {
   State<ContainerView> createState() => _ContainerViewState();
 }
 
-class _ContainerViewState extends State<ContainerView> with SingleTickerProviderStateMixin {
+class _ContainerViewState extends State<ContainerView>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +31,9 @@ class _ContainerViewState extends State<ContainerView> with SingleTickerProvider
                     height: 250,
                     decoration: BoxDecoration(
                       color: controller.containerColor,
-                      borderRadius: BorderRadius.circular(controller.borderRadius),
+                      borderRadius: BorderRadius.circular(
+                        controller.borderRadius,
+                      ),
                       boxShadow:
                           controller.hasShadow
                               ? [
@@ -47,7 +50,10 @@ class _ContainerViewState extends State<ContainerView> with SingleTickerProvider
                               : [],
                     ),
                     child: const Center(
-                      child: Text("Live Preview", style: TextStyle(color: Colors.white)),
+                      child: Text(
+                        "Live Preview",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
@@ -57,7 +63,7 @@ class _ContainerViewState extends State<ContainerView> with SingleTickerProvider
               Container(
                 width: 350,
                 padding: const EdgeInsets.all(16),
-                // margin: const EdgeInsets.all(16),  
+                // margin: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(8),
@@ -76,7 +82,10 @@ class _ContainerViewState extends State<ContainerView> with SingleTickerProvider
                     children: [
                       const Text(
                         "Adjust Properties",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 10),
 
@@ -85,7 +94,8 @@ class _ContainerViewState extends State<ContainerView> with SingleTickerProvider
                       TextField(
                         onChanged: (value) {
                           setState(() {
-                            controller.className = value.isNotEmpty ? value : "MyCustomBox";
+                            controller.className =
+                                value.isNotEmpty ? value : "MyCustomBox";
                           });
                         },
                         decoration: const InputDecoration(
@@ -227,7 +237,10 @@ class _ContainerViewState extends State<ContainerView> with SingleTickerProvider
                         child: Column(
                           children: [
                             const TabBar(
-                              tabs: [Tab(text: "Custom Widget"), Tab(text: "Extension")],
+                              tabs: [
+                                Tab(text: "Custom Widget"),
+                                Tab(text: "Extension"),
+                              ],
                             ),
                             SizedBox(height: 10),
                             SizedBox(
@@ -235,7 +248,9 @@ class _ContainerViewState extends State<ContainerView> with SingleTickerProvider
                               child: TabBarView(
                                 physics: const NeverScrollableScrollPhysics(),
                                 children: [
-                                  _buildCodeBox(controller.generateCode()), // Custom Widget Code
+                                  _buildCodeBox(
+                                    controller.generateCode(),
+                                  ), // Custom Widget Code
                                   _buildCodeBox(
                                     controller.generateExtensionCode(),
                                   ), // Extension Code
@@ -270,9 +285,9 @@ class _ContainerViewState extends State<ContainerView> with SingleTickerProvider
             icon: const Icon(Icons.copy, color: Colors.white),
             onPressed: () {
               Clipboard.setData(ClipboardData(text: code));
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(const SnackBar(content: Text("Copied to clipboard!")));
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Copied to clipboard!")),
+              );
             },
           ),
 
@@ -285,7 +300,10 @@ class _ContainerViewState extends State<ContainerView> with SingleTickerProvider
                 language: 'dart',
                 theme: monokaiSublimeTheme,
                 padding: const EdgeInsets.all(12),
-                textStyle: const TextStyle(fontSize: 14, fontFamily: 'monospace'),
+                textStyle: const TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'monospace',
+                ),
               ),
             ),
           ),

@@ -126,7 +126,6 @@ import 'package:get/get.dart';
 //   }
 // }
 
-
 class AnimationControllerX extends GetxController
     with GetSingleTickerProviderStateMixin {
   late AnimationController animationController;
